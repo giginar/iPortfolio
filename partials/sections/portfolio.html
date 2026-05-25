@@ -1,80 +1,159 @@
-<section class="portfolio section light-background" id="portfolio">
-<div class="container section-title" data-aos="fade-up">
-<h2>Underwater Portfolio</h2>
-<p>
-      A visual space for my underwater photography. Replace the image files below with your own dive photos and the gallery will be ready.
+<section class="portfolio section" id="portfolio">
+  <style>
+    #portfolio .portfolio-grid-fixed {
+      row-gap: 24px;
+    }
+
+    #portfolio .portfolio-content {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    #portfolio .portfolio-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #portfolio .portfolio-info {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      background: rgba(0, 0, 0, 0.45);
+      transition: opacity 0.3s ease;
+    }
+
+    #portfolio .portfolio-content:hover .portfolio-info {
+      opacity: 1;
+    }
+
+    #portfolio .preview-link {
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #149ddd;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    #portfolio .preview-link:hover {
+      background: #149ddd;
+      color: #fff;
+    }
+  </style>
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Underwater Portfolio</h2>
+    <p>
+      A visual space for my underwater photography. A collection of moments from
+      the underwater world, captured during my dives.
     </p>
-</div>
-<div class="container">
-<div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-<ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-<li class="filter-active" data-filter="*">All</li>
-<li data-filter=".filter-marine-life">Marine Life</li>
-<li data-filter=".filter-reef">Reef &amp; Seascape</li>
-<li data-filter=".filter-dive">Dive Moments</li>
-</ul>
-<div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-marine-life">
-<div class="portfolio-content h-100">
-<img alt="Underwater marine life photograph" class="img-fluid" src="assets/img/portfolio/underwater-1.jpg"/>
-<div class="portfolio-info">
-<h4>Marine Life I</h4>
-<p>Underwater photography by Yiğit Küçükçınar</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-1.jpg" title="Marine Life I"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-reef">
-<div class="portfolio-content h-100">
-<img alt="Underwater reef photograph" class="img-fluid" src="assets/img/portfolio/underwater-2.jpg"/>
-<div class="portfolio-info">
-<h4>Reef Scene I</h4>
-<p>Colors, textures and silence below the surface</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-2.jpg" title="Reef Scene I"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dive">
-<div class="portfolio-content h-100">
-<img alt="Scuba diving underwater photograph" class="img-fluid" src="assets/img/portfolio/underwater-3.jpg"/>
-<div class="portfolio-info">
-<h4>Dive Moment I</h4>
-<p>Scenes from dives and underwater exploration</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-3.jpg" title="Dive Moment I"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-marine-life">
-<div class="portfolio-content h-100">
-<img alt="Underwater fish photograph" class="img-fluid" src="assets/img/portfolio/underwater-4.jpg"/>
-<div class="portfolio-info">
-<h4>Marine Life II</h4>
-<p>Close encounters with life underwater</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-4.jpg" title="Marine Life II"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-reef">
-<div class="portfolio-content h-100">
-<img alt="Underwater seascape photograph" class="img-fluid" src="assets/img/portfolio/underwater-5.jpg"/>
-<div class="portfolio-info">
-<h4>Seascape I</h4>
-<p>Light, depth and movement underwater</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-5.jpg" title="Seascape I"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dive">
-<div class="portfolio-content h-100">
-<img alt="Diver underwater photograph" class="img-fluid" src="assets/img/portfolio/underwater-6.jpg"/>
-<div class="portfolio-info">
-<h4>Dive Moment II</h4>
-<p>Memories from the underwater world</p>
-<a class="glightbox preview-link" data-gallery="underwater-gallery" href="assets/img/portfolio/underwater-6.jpg" title="Dive Moment II"><i class="bi bi-zoom-in"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4 portfolio-grid-fixed" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/1.jpg" class="img-fluid" alt="Underwater photography 1" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/1.jpg" title="Underwater Photography 1" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/2.jpg" class="img-fluid" alt="Underwater photography 2" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/2.jpg" title="Underwater Photography 2" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/3.jpg" class="img-fluid" alt="Underwater photography 3" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/3.jpg" title="Underwater Photography 3" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/4.jpg" class="img-fluid" alt="Underwater photography 4" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/4.jpg" title="Underwater Photography 4" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/5.jpg" class="img-fluid" alt="Underwater photography 5" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/5.jpg" title="Underwater Photography 5" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/6.jpg" class="img-fluid" alt="Underwater photography 6" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/6.jpg" title="Underwater Photography 6" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/7.jpg" class="img-fluid" alt="Underwater photography 7" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/7.jpg" title="Underwater Photography 7" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/8.jpg" class="img-fluid" alt="Underwater photography 8" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/8.jpg" title="Underwater Photography 8" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/9.jpg" class="img-fluid" alt="Underwater photography 9" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/9.jpg" title="Underwater Photography 9" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item">
+        <div class="portfolio-content">
+          <img src="assets/img/portfolio/10.jpg" class="img-fluid" alt="Underwater photography 10" />
+          <div class="portfolio-info">
+            <a href="assets/img/portfolio/10.jpg" title="Underwater Photography 10" data-gallery="underwater-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

@@ -1273,3 +1273,9 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+.text-justify-custom {
+  text-align: justify;
+  text-align-last: left;
+  line-height: 1.7;
+}
