@@ -11,11 +11,14 @@
     await Promise.all(
       includeTargets.map(async (target) => {
         const file = target.getAttribute("data-include");
+
         try {
           const response = await fetch(file, { cache: "no-cache" });
+
           if (!response.ok) {
             throw new Error(`${response.status} ${response.statusText}`);
           }
+
           target.outerHTML = await response.text();
         } catch (error) {
           console.error(`Could not load partial: ${file}`, error);
@@ -68,11 +71,13 @@
 
   function initNavScrollSpy() {
     const navLinks = document.querySelectorAll(".navmenu a");
+
     const updateActiveLink = () => {
       const position = window.scrollY + 200;
 
       navLinks.forEach((navLink) => {
         if (!navLink.hash) return;
+
         const section = document.querySelector(navLink.hash);
         if (!section) return;
 
@@ -83,6 +88,7 @@
           document.querySelectorAll(".navmenu a.active").forEach((link) => {
             link.classList.remove("active");
           });
+
           navLink.classList.add("active");
         } else {
           navLink.classList.remove("active");
@@ -97,7 +103,12 @@
 
   function initAos() {
     if (typeof AOS !== "undefined") {
-      AOS.init({ duration: 600, easing: "ease-in-out", once: true, mirror: false });
+      AOS.init({
+        duration: 600,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false,
+      });
     }
   }
 
@@ -118,6 +129,37 @@
     });
   }
 
+  function updateSoftwareExperienceYears() {
+    const experienceElement = document.getElementById("software-experience-years");
+    if (!experienceElement) return;
+
+    const startDateValue = experienceElement.dataset.experienceStart;
+    if (!startDateValue) return;
+
+    const startDate = new Date(startDateValue);
+    const now = new Date();
+
+    if (Number.isNaN(startDate.getTime()) || now < startDate) {
+      experienceElement.setAttribute("data-purecounter-end", "0");
+      return;
+    }
+
+    const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
+    const diffInMilliseconds = now.getTime() - startDate.getTime();
+
+    /*
+     * Math.ceil intentionally rounds up.
+     * Example:
+     * August 2021 -> May 2026 becomes 5 years, not 4.
+     */
+    const yearsOfExperience = Math.ceil(diffInMilliseconds / millisecondsInYear);
+
+    experienceElement.setAttribute(
+      "data-purecounter-end",
+      String(yearsOfExperience)
+    );
+  }
+
   function initPureCounter() {
     if (typeof PureCounter !== "undefined") {
       new PureCounter();
@@ -136,6 +178,7 @@
     document.querySelectorAll(".isotope-layout").forEach((layout) => {
       const container = layout.querySelector(".isotope-container");
       const filters = layout.querySelectorAll(".isotope-filters li");
+
       if (!container) return;
 
       const createIsotope = () => {
@@ -150,8 +193,14 @@
           filter.addEventListener("click", function () {
             filters.forEach((item) => item.classList.remove("filter-active"));
             this.classList.add("filter-active");
-            isotope.arrange({ filter: this.getAttribute("data-filter") });
-            if (typeof AOS !== "undefined") AOS.refresh();
+
+            isotope.arrange({
+              filter: this.getAttribute("data-filter"),
+            });
+
+            if (typeof AOS !== "undefined") {
+              AOS.refresh();
+            }
           });
         });
       };
@@ -166,17 +215,24 @@
 
   function removePreloader() {
     const preloader = document.querySelector("#preloader");
-    if (preloader) preloader.remove();
+
+    if (preloader) {
+      preloader.remove();
+    }
   }
 
   async function boot() {
     await includePartials();
+
     initHeaderToggle();
     initScrollTop();
     initNavScrollSpy();
     initAos();
     initTyped();
+
+    updateSoftwareExperienceYears();
     initPureCounter();
+
     initGlightbox();
     initPortfolioIsotope();
     removePreloader();
